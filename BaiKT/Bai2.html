@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Itc</title>
+</head>
+<body>
+    <input type="text" id="inputString" placeholder="Nhập chuỗi...">
+    <br><br>
+    <button onclick="chuanHoaChuoi()">Chuẩn hóa chuỗi</button>
+    <button onclick="demKiTu()">Đếm kí tự</button>
+    <button onclick="timTuITC()">Tìm từ ITC</button>
+    <button onclick="thayTheITC()">Thay thế ITC</button>
+    <br><br>
+    <div id="result"></div>
+
+    <script>
+        function chuanHoaChuoi() {
+            var input = document.getElementById("inputString").value;
+            var normalizedString = input.normalize('NFC'); // Chuẩn hóa Unicode
+            document.getElementById("result").textContent = "Chuỗi sau khi chuẩn hóa: " + normalizedString;
+        }
+
+        function demKiTu() {
+            var input = document.getElementById("inputString").value;
+            var length = input.length;
+            document.getElementById("result").textContent = "Số kí tự trong chuỗi: " + length;
+        }
+
+        function timTuITC() {
+            var input = document.getElementById("inputString").value;
+            var match = input.match(/itc/gi); // Tìm từ ITC, không phân biệt chữ hoa chữ thường
+            var count = match ? match.length : 0;
+            document.getElementById("result").textContent = "Số lần xuất hiện của từ ITC: " + count;
+        }
+
+        function thayTheITC() {
+            var input = document.getElementById("inputString").value;
+            var replacedString = input.replace(/itc/gi, "ITC"); // Thay thế từ ITC, không phân biệt chữ hoa chữ thường
+            document.getElementById("result").textContent = "Chuỗi sau khi thay thế: " + replacedString;
+        }
+    </script>
+</body>
+</html>
